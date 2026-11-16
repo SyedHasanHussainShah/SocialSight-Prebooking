@@ -150,6 +150,15 @@ function FamilySection() {
                 }
               }}
             >
+              <div className="dashboard-device-back" aria-hidden="true">
+                <IPhoneFrame
+                  src="/assets/socialsight-family-splash.png"
+                  alt=""
+                  showIsland
+                  showHomeIndicator={false}
+                  className="family-iphone family-iphone--back"
+                />
+              </div>
               {/* Keep the family screen header clear below the Dynamic Island. */}
               <IPhoneFrame
                 src="/assets/socialsight-family-dashboard.png?v=3"

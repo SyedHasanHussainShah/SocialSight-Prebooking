@@ -909,31 +909,31 @@ h1 {
   object-position: center top;
 }
 
-/* Refined iPhone corner radius for the dashboard and companion previews. */
+/* Match the tighter phone-frame corners used in the hero preview. */
 .family-iphone.iphone-chassis {
-  border-radius: 50px;
+  border-radius: 28px;
 }
 
 .family-iphone .iphone-inner-border {
-  border-radius: 46px;
+  border-radius: 24px;
 }
 
 .family-iphone .iphone-screen,
 .family-iphone .iphone-screen-img {
-  border-radius: 42px;
+  border-radius: 22px;
 }
 
 .privacy-iphone.iphone-chassis {
-  border-radius: 50px;
+  border-radius: 28px;
 }
 
 .privacy-iphone .iphone-inner-border {
-  border-radius: 46px;
+  border-radius: 24px;
 }
 
 .privacy-iphone .iphone-screen,
 .privacy-iphone .iphone-screen-img {
-  border-radius: 42px;
+  border-radius: 22px;
 }
 
 .family-iphone .dynamic-island {
@@ -1288,6 +1288,23 @@ h1 {
   transform: rotate(-5deg);
   filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.5));
   transition: transform 0.4s ease;
+}
+
+.dashboard-device-back {
+  position: absolute;
+  z-index: 0;
+  top: 120px;
+  left: -148px;
+  width: 205px;
+  height: 405px;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.42));
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+.dashboard-device-wrap > .family-iphone {
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-device-wrap:hover {
@@ -2690,6 +2707,9 @@ h1 {
     transform: translateX(-50%) rotate(-3deg);
     transition: transform 180ms ease-out;
   }
+  .dashboard-device-back {
+    display: none;
+  }
   .dashboard-device-wrap:hover {
     transform: translateX(-50%) rotate(-3deg);
   }
@@ -2841,6 +2861,9 @@ h1 {
     height: 370px;
     transform: translateX(-50%) rotate(-3deg);
     transition: transform 180ms ease-out;
+  }
+  .dashboard-device-back {
+    display: none;
   }
   .dashboard-device-wrap:hover {
     transform: translateX(-50%) rotate(-3deg);

@@ -909,6 +909,33 @@ h1 {
   object-position: center top;
 }
 
+/* Refined iPhone corner radius for the dashboard and companion previews. */
+.family-iphone.iphone-chassis {
+  border-radius: 50px;
+}
+
+.family-iphone .iphone-inner-border {
+  border-radius: 46px;
+}
+
+.family-iphone .iphone-screen,
+.family-iphone .iphone-screen-img {
+  border-radius: 42px;
+}
+
+.privacy-iphone.iphone-chassis {
+  border-radius: 50px;
+}
+
+.privacy-iphone .iphone-inner-border {
+  border-radius: 46px;
+}
+
+.privacy-iphone .iphone-screen,
+.privacy-iphone .iphone-screen-img {
+  border-radius: 42px;
+}
+
 .family-iphone .dynamic-island {
   height: 16px;
   top: 7px;
@@ -2619,7 +2646,7 @@ h1 {
     margin-right: auto;
   }
   .hero-note {
-    justify-content: center;
+    display: none;
   }
   .hero-stage {
     top: 290px;

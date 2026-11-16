@@ -138,12 +138,14 @@ function FamilySection() {
               <i>✦</i>
             </div>
             <div className="dashboard-device-wrap">
-              {/* Pic 5 Fix: Clean phone frame without fake overlapping status bar or notch cutting into logo */}
+              {/* iPhone screen with realistic Dynamic Island notch and page content shifted down */}
               <IPhoneFrame
                 src="/assets/socialsight-family-dashboard.png"
                 alt="SocialSight dashboard showing family circle"
-                showStatusBar={false}
-                showIsland={false}
+                showStatusBar={true}
+                showIsland={true}
+                statusTheme="dark"
+                contentOffset={40}
                 className="family-iphone"
               />
               <div className="dashboard-float">
@@ -254,7 +256,7 @@ function ProductSection() {
             </a>
           </div>
           <img
-            src="/assets/socialsight-wristband.png"
+            src="/assets/socialsight-wristband-clean.png"
             alt="SocialSight ergonomic companion wristband with tactile button"
             className="product-wristband"
           />

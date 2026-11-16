@@ -2,11 +2,19 @@ import { ArrowDownRight, ArrowUpRight, LockKeyhole, Play } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { SectionEyebrow } from './BrandMark.jsx'
 
-function Phone({ className, src, label, alt }) {
+function Phone({ className, src, label, alt, hasIsland = false, offset = 0 }) {
   return (
     <figure className={`hero-phone ${className}`} aria-label={label}>
-      <div className="phone-frame">
-        <img src={src} alt={alt} />
+      <div className={`phone-frame ${hasIsland ? 'phone-frame--with-island' : ''}`}>
+        {hasIsland && (
+          <div className="hero-dynamic-island" aria-hidden="true">
+            <span className="island-sensor" />
+            <span className="island-camera" />
+          </div>
+        )}
+        <div className="hero-phone-screen" style={{ paddingTop: offset ? `${offset}px` : undefined }}>
+          <img src={src} alt={alt} />
+        </div>
         <span className="phone-glare" />
       </div>
       <figcaption>{label}</figcaption>
@@ -56,8 +64,15 @@ export default function HeroScene() {
           <div className="glow-core" />
           <p className="stage-label stage-label--top">YOUR CIRCLE <i /> YOUR WORLD</p>
           
-          {/* Main Family Dashboard Phone */}
-          <Phone className="phone--main" src="/assets/socialsight-family-dashboard.png" label="Family dashboard" alt="SocialSight Family dashboard with a family circle and privacy features" />
+          {/* Main Family Dashboard Phone (Dynamic Island at center top, page content shifted down) */}
+          <Phone
+            className="phone--main"
+            src="/assets/socialsight-family-dashboard.png"
+            label="Family dashboard"
+            alt="SocialSight dashboard with a family circle and privacy features"
+            hasIsland={true}
+            offset={30}
+          />
           
           {/* Splash Screen Phone (shifted up so it doesn't overlap earbuds) */}
           <Phone className="phone--splash" src="/assets/socialsight-family-splash.png" label="A warmer welcome" alt="SocialSight Family splash screen" />
@@ -66,7 +81,7 @@ export default function HeroScene() {
           <Phone className="phone--connect" src="/assets/socialsight-connect-screen.jpeg" label="Companion app" alt="SocialSight companion app connection screen" />
           
           {/* Companion Ergonomic Wristband (replaces watch, positioned lower on right) */}
-          <img className="hero-wristband" src="/assets/socialsight-wristband.png" alt="SocialSight companion wristband" />
+          <img className="hero-wristband" src="/assets/socialsight-wristband-clean.png" alt="SocialSight companion wristband" />
           
           {/* Companion Earbuds (positioned cleanly below splash phone) */}
           <img className="hero-buds" src="/assets/socialsight-earbuds.png" alt="SocialSight companion earbuds" />

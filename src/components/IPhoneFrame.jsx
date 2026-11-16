@@ -4,11 +4,13 @@ export default function IPhoneFrame({
   src,
   alt = 'iPhone screen',
   className = '',
-  showStatusBar = false, // Disabled by default to prevent duplicate time/wifi/battery overlapping app headers
+  showStatusBar = false,
   showHomeIndicator = true,
-  showIsland = false, // Disabled by default so it does not block the top SocialSight logo/icons
+  showIsland = false,
   time = '9:41',
   batteryLevel = 92,
+  statusTheme = 'light', // 'light' (white text/icons) or 'dark' (black text/icons on light screens)
+  contentOffset = 0, // Shifts screen image down so app header has safe-area breathing room
   children,
 }) {
   return (
@@ -28,11 +30,11 @@ export default function IPhoneFrame({
         <span className="iphone-antenna iphone-antenna--bottom-right" aria-hidden="true" />
 
         {/* Screen Display Container */}
-        <div className="iphone-screen">
+        <div className={`iphone-screen ${statusTheme === 'dark' ? 'iphone-screen--light-bg' : ''}`}>
           {/* Top Micro Speaker Grill (at top rim) */}
           <div className="iphone-earpiece" aria-hidden="true" />
 
-          {/* Dynamic Island (optional) */}
+          {/* Dynamic Island Notch (Center Top) */}
           {showIsland && (
             <div className="dynamic-island" aria-hidden="true">
               <div className="dynamic-island-sensor" />
@@ -42,9 +44,9 @@ export default function IPhoneFrame({
             </div>
           )}
 
-          {/* iOS Status Bar (optional, time on left, icons on right) */}
+          {/* iOS Status Bar (time on left, icons on right) */}
           {showStatusBar && (
-            <div className="iphone-status-bar" aria-hidden="true">
+            <div className={`iphone-status-bar iphone-status-bar--${statusTheme}`} aria-hidden="true">
               <span className="status-time">{time}</span>
 
               <div className="status-icons">
@@ -69,15 +71,20 @@ export default function IPhoneFrame({
             </div>
           )}
 
-          {/* Screen Content Image */}
-          <img src={src} alt={alt} className="iphone-screen-img" />
+          {/* Screen Content Viewport - Content shifted down like screen of iPhone */}
+          <div
+            className="iphone-screen-viewport"
+            style={{ paddingTop: contentOffset ? `${contentOffset}px` : undefined }}
+          >
+            <img src={src} alt={alt} className="iphone-screen-img" />
+          </div>
 
           {/* Subtle Glass Reflection Glare */}
           <div className="iphone-screen-glare" aria-hidden="true" />
 
           {/* iOS Bottom Home Indicator Bar */}
           {showHomeIndicator && (
-            <div className="iphone-home-indicator" aria-hidden="true">
+            <div className={`iphone-home-indicator iphone-home-indicator--${statusTheme}`} aria-hidden="true">
               <span className="home-bar" />
             </div>
           )}

@@ -2670,9 +2670,14 @@ h1 {
 }
 
 @media (max-width: 790px) {
-  .page-shell,
-  .nav-shell {
+  .site-header {
+    padding-top: max(8px, env(safe-area-inset-top));
+  }
+  .page-shell {
     width: min(100% - 32px, 600px);
+  }
+  .nav-shell {
+    width: min(100% - 40px, 600px);
   }
   .nav-shell {
     height: 70px;
@@ -2682,7 +2687,7 @@ h1 {
     position: absolute;
     left: 16px;
     right: 16px;
-    top: 65px;
+    top: calc(70px + max(8px, env(safe-area-inset-top)));
     margin: 0;
     padding: 17px;
     gap: 4px;

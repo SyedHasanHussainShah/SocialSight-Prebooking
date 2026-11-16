@@ -344,16 +344,36 @@ function PrivacySection() {
         <ScrollReveal className="privacy-visual" delay={130}>
           <div className="privacy-orb privacy-orb--one" />
           <div className="privacy-orb privacy-orb--two" />
-          <div className="privacy-phone-card">
-            {/* Use an iPhone status bar and Dynamic Island over the companion screen. */}
-            <IPhoneFrame
-              src="/assets/socialsight-connect-screen-iphone.png"
-              alt="SocialSight companion user app connection screen"
-              showStatusBar
-              showIsland
-              showHomeIndicator={false}
-              className="privacy-iphone"
-            />
+          <div className="privacy-phone-stack">
+            <div className="privacy-phone-card privacy-phone-card--home">
+              <IPhoneFrame
+                src="/assets/socialsight-companion-home.png"
+                alt="SocialSight companion app home screen"
+                showStatusBar
+                showIsland
+                className="privacy-iphone privacy-iphone--stack privacy-iphone--subapp"
+              />
+            </div>
+            <div className="privacy-phone-card privacy-phone-card--code">
+              <IPhoneFrame
+                src="/assets/socialsight-companion-enter-code.png"
+                alt="SocialSight companion app enter code screen"
+                showStatusBar
+                showIsland
+                className="privacy-iphone privacy-iphone--stack privacy-iphone--subapp"
+              />
+            </div>
+            <div className="privacy-phone-card privacy-phone-card--connect">
+              {/* Keep the existing connection screen as the front phone. */}
+              <IPhoneFrame
+                src="/assets/socialsight-connect-screen-iphone.png"
+                alt="SocialSight companion user app connection screen"
+                showStatusBar
+                showIsland
+                showHomeIndicator={false}
+                className="privacy-iphone privacy-iphone--stack"
+              />
+            </div>
           </div>
           <div className="secure-chip">
             <LockKeyhole size={16} />

@@ -34,7 +34,7 @@ export default function Navigation() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <nav className="nav-shell" aria-label="Main navigation">
         <a href="#top" className="brand-link" onClick={closeMenu}>
-          <BrandMark />
+          <BrandMark iconSrc="/assets/socialsight-eye-mark-transparent.png" />
         </a>
 
         <div className={`nav-links ${open ? 'is-open' : ''}`}>

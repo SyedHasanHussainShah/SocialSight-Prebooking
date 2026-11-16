@@ -138,14 +138,12 @@ function FamilySection() {
               <i>✦</i>
             </div>
             <div className="dashboard-device-wrap">
-              {/* iPhone screen with realistic Dynamic Island notch and page content shifted down */}
+              {/* Keep the family screen header clear below the Dynamic Island. */}
               <IPhoneFrame
                 src="/assets/socialsight-family-dashboard.png"
                 alt="SocialSight dashboard showing family circle"
-                showStatusBar={true}
-                showIsland={true}
-                statusTheme="dark"
-                contentOffset={40}
+                showStatusBar
+                showIsland
                 className="family-iphone"
               />
               <div className="dashboard-float">
@@ -256,7 +254,7 @@ function ProductSection() {
             </a>
           </div>
           <img
-            src="/assets/socialsight-wristband-clean.png"
+            src="/assets/socialsight-wristband-card.png"
             alt="SocialSight ergonomic companion wristband with tactile button"
             className="product-wristband"
           />
@@ -276,7 +274,7 @@ function ProductSection() {
             </a>
           </div>
           <img
-            src="/assets/socialsight-earbuds.png"
+            src="/assets/socialsight-earbuds-card.png"
             alt="SocialSight companion earbuds in charging case"
             className="product-buds"
           />
@@ -326,12 +324,13 @@ function PrivacySection() {
           <div className="privacy-orb privacy-orb--one" />
           <div className="privacy-orb privacy-orb--two" />
           <div className="privacy-phone-card">
-            {/* Pic 7 Fix: Removed duplicate fake status bar / Apple wifi time charging over the real image */}
+            {/* Use an iPhone status bar and Dynamic Island over the companion screen. */}
             <IPhoneFrame
-              src="/assets/socialsight-connect-screen.jpeg"
+              src="/assets/socialsight-connect-screen-iphone.png"
               alt="SocialSight companion user app connection screen"
-              showStatusBar={false}
-              showIsland={false}
+              showStatusBar
+              showIsland
+              showHomeIndicator={false}
               className="privacy-iphone"
             />
           </div>

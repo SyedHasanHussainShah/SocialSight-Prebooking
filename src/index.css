@@ -316,6 +316,7 @@ section[id],
   max-width: 500px;
   padding-top: 5px; /* Pic 2: Content starts immediately */
   position: relative;
+  top: -28px;
   z-index: 3;
   animation: intro-up 0.9s both cubic-bezier(0.2, 0.75, 0.2, 1);
 }
@@ -358,7 +359,13 @@ h1 {
   max-width: 700px;
 }
 
+.hero-copy h1 {
+  margin-bottom: 34px;
+}
+
 .hero-description {
+  position: relative;
+  top: -16px;
   max-width: 444px;
   color: #bcc8ca;
   font-size: 15px;
@@ -367,6 +374,8 @@ h1 {
 }
 
 .hero-buttons {
+  position: relative;
+  top: -16px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -404,7 +413,9 @@ h1 {
 }
 
 .hero-note {
-  margin-top: 28px;
+  position: relative;
+  top: -8px;
+  margin-top: 18px;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -420,7 +431,7 @@ h1 {
 .hero-stage {
   position: absolute;
   right: -45px;
-  top: 10px; /* Pic 2: Pulled higher to remove top gap */
+  top: -90px;
   width: 710px;
   height: 640px;
   transform-style: preserve-3d;
@@ -481,15 +492,6 @@ h1 {
   transform-style: preserve-3d;
 }
 
-.hero-phone figcaption {
-  position: absolute;
-  white-space: nowrap;
-  color: rgba(229, 249, 246, 0.72);
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
 .phone-frame {
   height: 100%;
   width: 100%;
@@ -504,69 +506,112 @@ h1 {
   transition: transform 0.3s ease;
 }
 
-.phone-frame--with-island {
-  background: #fdf8f2;
-}
-
-.hero-phone-screen {
-  width: 100%;
-  height: 100%;
+.phone-frame img {
   position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  display: flex;
-  flex-direction: column;
-}
-
-.phone-frame img,
-.hero-phone-screen img {
+  z-index: 20;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
   border-radius: 22px;
 }
 
-/* Hero 3D Dynamic Island Notch */
-.hero-dynamic-island {
+.phone-frame .phone-glare,
+.iphone-screen .iphone-screen-glare,
+.iphone-glare,
+.screen-glare {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.phone-frame .phone-island {
   position: absolute;
-  top: 9px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 86px;
-  height: 22px;
-  background: #000000;
+  z-index: 30;
+  width: 30%;
+  height: 12px;
+  background: #081116;
   border-radius: 999px;
-  z-index: 15;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  top: 9px;
+  left: 35%;
+  opacity: 0.95;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.15);
+}
+
+.phone--main .phone-island {
+  height: 18px;
+}
+
+.phone--main .iphone-status-bar {
+  color: #071b2c;
+  top: 7px;
+  height: 22px;
+  padding: 0 18px;
+}
+
+.phone--main .status-time,
+.phone--main .status-icons,
+.phone--main .status-cellular,
+.phone--main .status-wifi {
+  color: #071b2c;
+  line-height: 1;
+}
+
+.phone--main .status-battery-body {
+  border-color: rgba(7, 27, 44, 0.8);
+}
+
+.phone--main .status-battery-cap {
+  background: #071b2c;
+}
+
+.phone--main .status-battery-level {
+  background: #071b2c;
+}
+
+.phone--connect .iphone-status-bar {
+  height: 24px;
   padding: 0 8px;
-  box-shadow: 0 0 0 0.8px rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
-.hero-dynamic-island .island-sensor {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #080d14;
+.phone--connect .status-time {
+  font-size: 7px;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
-.hero-dynamic-island .island-camera {
-  width: 8.5px;
-  height: 8.5px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #2a3c5a 0%, #0c121d 60%, #000 100%);
+.phone--connect .status-icons {
+  line-height: 1;
+  gap: 1px;
 }
 
-.phone-frame .phone-glare {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(110deg, rgba(255, 255, 255, 0.2), transparent 18%, transparent 70%, rgba(83, 222, 212, 0.12));
-  z-index: 4;
+.phone--connect .status-cellular,
+.phone--connect .status-wifi {
+  width: 7px;
+  height: 6px;
+}
+
+.phone--connect .status-battery-body {
+  width: 12px;
+  height: 7px;
+  border-radius: 2px;
+  padding: 1px;
+}
+
+.phone--connect .status-battery-cap {
+  height: 3px;
+}
+
+.phone--connect .status-battery-level,
+.privacy-iphone .status-battery-level {
+  background: #ffffff;
+}
+
+.phone--connect .phone-island {
+  width: 26%;
+  height: 12px;
+  left: 37%;
+  top: 6px;
 }
 
 /* Pic 8: Main Family Dashboard Phone */
@@ -574,18 +619,13 @@ h1 {
   width: 224px;
   height: 468px;
   left: 242px;
-  top: 76px;
+  top: 116px;
   z-index: 4;
   animation: main-phone 7s ease-in-out infinite;
 }
 
 .phone--main .phone-frame {
   transform: rotateY(-8deg) rotateX(3deg);
-}
-
-.phone--main figcaption {
-  left: 16px;
-  bottom: -22px;
 }
 
 /* Pic 8: Splash Mobile - Shifted more UP so it does NOT cut into the earbuds */
@@ -599,22 +639,24 @@ h1 {
 }
 
 .phone--splash .phone-frame {
+  padding: 4px;
   transform: rotateY(17deg) rotateZ(-7deg);
 }
 
-.phone--splash figcaption {
-  top: 60px;
-  left: -100px;
-  transform: rotate(-90deg);
-  transform-origin: right center;
+.phone--splash .phone-island {
+  top: 6px;
+}
+
+.phone--splash .phone-frame img {
+  border-radius: 24px;
 }
 
 /* Pic 8: Companion Phone on the right - Slightly down but fully visible */
 .phone--connect {
   width: 132px;
   height: 280px;
-  right: 30px;
-  top: 240px; /* Adjusted down, but safely in view */
+  right: 55px;
+  top: 248px;
   z-index: 3;
   animation: float-right 7.4s ease-in-out infinite;
 }
@@ -623,14 +665,7 @@ h1 {
   transform: rotateY(-18deg) rotateZ(8deg);
 }
 
-.phone--connect figcaption {
-  right: -90px;
-  bottom: 65px;
-  transform: rotate(90deg);
-  transform-origin: left center;
-}
-
-/* Pic 10 & 11: Wristband replaces watch, positioned DOWN on the right */
+/* Keep the wristband clear of the companion phone. */
 .hero-wristband {
   position: absolute;
   z-index: 7;
@@ -638,7 +673,7 @@ h1 {
   width: 190px;
   height: 190px;
   right: 15px;
-  top: 135px; /* Pic 8: Watch down! */
+  top: 80px;
   filter: drop-shadow(0 24px 18px rgba(0, 0, 0, 0.45));
   animation: product-drift 7.5s ease-in-out infinite;
 }
@@ -654,39 +689,6 @@ h1 {
   bottom: 15px;
   filter: drop-shadow(0 24px 16px rgba(0, 0, 0, 0.45));
   animation: product-drift 8.5s -1.3s ease-in-out infinite reverse;
-}
-
-.stage-label {
-  position: absolute;
-  margin: 0;
-  font-size: 9px;
-  color: rgba(190, 225, 222, 0.44);
-  letter-spacing: 2px;
-  z-index: 1;
-}
-
-.stage-label i {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin: 0 9px;
-  border-radius: 50%;
-  background: #5adad2;
-}
-
-.stage-label--top {
-  top: 145px;
-  left: 55px;
-}
-
-.stage-label--bottom {
-  bottom: 67px;
-  left: 177px;
-}
-
-.stage-label b {
-  color: var(--gold);
-  padding: 0 8px;
 }
 
 .scroll-prompt {
@@ -714,16 +716,37 @@ h1 {
 .trust-strip {
   position: relative;
   overflow: hidden;
-  background: #e8ece7;
+  background: #f5f7f4;
   color: #12272d;
   border-bottom: 1px solid #cedbd7;
   padding: 24px 0;
   user-select: none;
-  mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.trust-strip::before,
+.trust-strip::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 54px;
+  pointer-events: none;
+}
+
+.trust-strip::before {
+  left: 0;
+  background: linear-gradient(90deg, #f5f7f4, transparent);
+}
+
+.trust-strip::after {
+  right: 0;
+  background: linear-gradient(270deg, #f5f7f4, transparent);
 }
 
 .trust-marquee {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: max-content;
   will-change: transform;
@@ -862,28 +885,65 @@ h1 {
   background: #081116;
 }
 
-/* Light background screen (used for SocialSight family app) */
-.iphone-screen--light-bg {
-  background: #fdf8f2;
-}
-
-/* Viewport for screen content - pushes page down below Dynamic Island notch like a real iPhone */
-.iphone-screen-viewport {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
 .iphone-screen-img {
+  position: relative;
+  z-index: 20;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
-  border-radius: 0 0 38px 38px;
+  border-radius: 38px;
+}
+
+.family-iphone .iphone-screen-img {
+  object-position: center top;
+}
+
+.family-iphone .dynamic-island {
+  height: 22px;
+  top: 7px;
+}
+
+.family-iphone .iphone-status-bar,
+.family-iphone .status-time,
+.family-iphone .status-icons,
+.family-iphone .status-cellular,
+.family-iphone .status-wifi {
+  color: #071b2c;
+}
+
+.family-iphone .iphone-status-bar {
+  top: 7px;
+  height: 22px;
+  padding: 0 18px;
+}
+
+.family-iphone .status-time,
+.family-iphone .status-icons {
+  line-height: 1;
+}
+
+.privacy-iphone .iphone-status-bar {
+  top: 7px;
+  height: 17px;
+  padding: 0 18px;
+}
+
+.privacy-iphone .status-time,
+.privacy-iphone .status-icons {
+  line-height: 1;
+}
+
+.family-iphone .status-battery-body {
+  border-color: rgba(7, 27, 44, 0.8);
+}
+
+.family-iphone .status-battery-cap {
+  background: #071b2c;
+}
+
+.family-iphone .status-battery-level {
+  background: #071b2c;
 }
 
 /* Micro speaker earpiece grill */
@@ -892,83 +952,53 @@ h1 {
   top: 3px;
   left: 50%;
   transform: translateX(-50%);
-  width: 44px;
-  height: 2.5px;
+  width: 42px;
+  height: 2px;
   background: #18191d;
   border-radius: 2px;
-  z-index: 35;
+  z-index: 20;
 }
 
-/* iOS Status Bar (Authentic typography and vector icons) */
+/* Optional iOS Status Bar (used only if explicitly enabled) */
 .iphone-status-bar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 38px;
-  padding: 8px 20px 0;
+  padding: 9px 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 25;
+  z-index: 40;
+  color: #ffffff;
   pointer-events: none;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
 }
 
-.iphone-status-bar--light {
-  color: #ffffff;
-}
-
-.iphone-status-bar--light .status-cellular,
-.iphone-status-bar--light .status-wifi {
-  color: #ffffff;
-}
-
-.iphone-status-bar--light .status-battery-body {
-  border-color: rgba(255, 255, 255, 0.9);
-}
-
-.iphone-status-bar--light .status-battery-cap {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.iphone-status-bar--dark {
-  color: #111827;
-}
-
-.iphone-status-bar--dark .status-cellular,
-.iphone-status-bar--dark .status-wifi {
-  color: #111827;
-}
-
-.iphone-status-bar--dark .status-battery-body {
-  border-color: rgba(17, 24, 39, 0.9);
-}
-
-.iphone-status-bar--dark .status-battery-cap {
-  background: rgba(17, 24, 39, 0.9);
-}
-
 .status-time {
   font-size: 11.5px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.2px;
 }
 
 .status-icons {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 1px;
 }
 
 .status-cellular {
   width: 15px;
   height: 10px;
+  color: #ffffff;
 }
 
 .status-wifi {
-  width: 14px;
-  height: 10px;
+  width: 16px;
+  height: 14px;
+  color: inherit;
+  flex-shrink: 0;
 }
 
 .status-battery {
@@ -980,7 +1010,7 @@ h1 {
 .status-battery-body {
   width: 20px;
   height: 9.5px;
-  border: 1.2px solid currentColor;
+  border: 1.2px solid rgba(255, 255, 255, 0.9);
   border-radius: 3.5px;
   padding: 1px;
   display: flex;
@@ -996,38 +1026,38 @@ h1 {
 .status-battery-cap {
   width: 1.3px;
   height: 4px;
-  background: currentColor;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 0 1px 1px 0;
 }
 
-/* Increased Realistic Dynamic Island Notch (Center Top) */
+/* Dynamic Island */
 .dynamic-island {
   position: absolute;
-  top: 9px;
+  top: 7px;
   left: 50%;
   transform: translateX(-50%);
-  width: 96px;
-  height: 25px;
+  width: min(108px, 31%);
+  height: 17px;
   background: #000000;
   border-radius: 999px;
   z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 9px;
-  box-shadow: 0 0 0 0.8px rgba(255, 255, 255, 0.12), 0 3px 10px rgba(0, 0, 0, 0.45);
+  padding: 0 5px;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.08);
 }
 
 .dynamic-island-sensor {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: #080d14;
+  background: #090e15;
 }
 
 .dynamic-island-camera {
-  width: 9.5px;
-  height: 9.5px;
+  width: 8.5px;
+  height: 8.5px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #2a3c5a 0%, #0c121d 60%, #000 100%);
   position: relative;
@@ -1037,10 +1067,10 @@ h1 {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 3px;
-  height: 3px;
+  width: 2.5px;
+  height: 2.5px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.65);
   filter: blur(0.2px);
 }
 
@@ -1064,24 +1094,6 @@ h1 {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 999px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.iphone-home-indicator--dark .home-bar {
-  background: rgba(0, 0, 0, 0.65);
-}
-
-.iphone-home-indicator--light .home-bar {
-  background: rgba(255, 255, 255, 0.85);
-}
-
-/* Glass glare reflection across screen */
-.iphone-screen-glare {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 28%, transparent 55%);
-  z-index: 12;
 }
 
 /* ==========================================================================
@@ -1167,11 +1179,7 @@ h1 {
 }
 
 .dashboard-glow {
-  position: absolute;
-  inset: 15% 5%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(47, 194, 184, 0.42), rgba(184, 220, 211, 0.22) 37%, transparent 69%);
-  filter: blur(16px);
+  display: none;
 }
 
 .dashboard-card {
@@ -1181,7 +1189,7 @@ h1 {
   border-radius: 28px;
   padding: 35px 40px;
   background: linear-gradient(130deg, #082c36 0%, #075d63 44%, #b3ded8 135%);
-  box-shadow: 0 25px 50px rgba(22, 79, 75, 0.22);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .dashboard-card::before {
@@ -1241,7 +1249,7 @@ h1 {
   top: 105px;
   height: 490px;
   transform: rotate(-5deg);
-  filter: drop-shadow(0 25px 35px rgba(0, 15, 20, 0.45));
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.5));
   transition: transform 0.4s ease;
 }
 
@@ -1263,7 +1271,7 @@ h1 {
   backdrop-filter: blur(12px);
   border-radius: 14px;
   padding: 11px 13px;
-  box-shadow: 0 16px 30px rgba(0, 37, 42, 0.22);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
   font-size: 9.5px;
 }
 
@@ -1709,28 +1717,18 @@ h1 {
   margin-top: 8px;
 }
 
-/* Pic 10 & 11: Wristband inside product card */
+/* Matched product art size, baseline, and motion */
 .product-wristband,
-.product-watch {
-  position: absolute;
-  z-index: 3;
-  width: 430px;
-  max-width: 76%;
-  right: -55px;
-  bottom: -45px;
-  filter: drop-shadow(-15px 25px 20px rgba(0, 0, 0, 0.55));
-  animation: product-drift 7s ease-in-out infinite;
-}
-
+.product-watch,
 .product-buds {
   position: absolute;
   z-index: 3;
-  width: 400px;
+  width: 350px;
   max-width: 76%;
-  right: -61px;
-  bottom: -34px;
-  filter: drop-shadow(-15px 29px 21px rgba(0, 0, 0, 0.55));
-  animation: product-drift 8s -1s ease-in-out infinite reverse;
+  right: -42px;
+  bottom: 18px;
+  filter: drop-shadow(-15px 25px 20px rgba(0, 0, 0, 0.55));
+  animation: product-drift 7s ease-in-out infinite;
 }
 
 .product-ring {
@@ -2486,6 +2484,7 @@ h1 {
   }
   .hero-stage {
     right: -136px;
+    top: 10px;
     transform: scale(0.89) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     transform-origin: center right;
   }
@@ -2561,12 +2560,12 @@ h1 {
     background: transparent;
   }
   .hero {
-    min-height: 930px;
+    min-height: 880px;
   }
   .hero-inner {
     display: block;
-    min-height: 890px;
-    padding-top: 130px;
+    min-height: 806px;
+    padding-top: 104px;
   }
   .hero-copy {
     padding: 0;
@@ -2585,7 +2584,7 @@ h1 {
     justify-content: center;
   }
   .hero-stage {
-    top: 443px;
+    top: 290px;
     left: 50%;
     right: auto;
     width: 640px;
@@ -2609,16 +2608,26 @@ h1 {
     max-width: 520px;
   }
   .dashboard-feature {
-    min-height: 490px;
+    min-height: 650px;
   }
   .dashboard-card {
-    min-height: 490px;
+    min-height: 650px;
   }
   .dashboard-device-wrap {
-    right: 20px;
-    width: 220px;
-    top: 50px;
-    height: 465px;
+    left: 50%;
+    right: auto;
+    width: 205px;
+    top: 132px;
+    height: 430px;
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  .dashboard-device-wrap:hover {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  .dashboard-float {
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
   }
   .value-grid,
   .steps-grid,
@@ -2656,16 +2665,17 @@ h1 {
     padding: 50px 28px 40px;
   }
   .privacy-visual {
-    min-height: 490px;
+    min-height: 540px;
   }
   .privacy-phone-card {
     width: 200px;
     height: 430px;
-    top: 40px;
+    top: 30px;
   }
   .secure-chip {
-    left: calc(50% - 130px);
-    bottom: 24px;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
   }
   .footer-invite-card {
     flex-direction: column;
@@ -2702,11 +2712,11 @@ h1 {
     font-size: 46px;
   }
   .hero {
-    min-height: 877px;
+    min-height: 720px;
   }
   .hero-inner {
-    min-height: 840px;
-    padding-top: 119px;
+    min-height: 646px;
+    padding-top: 96px;
   }
   .hero-description {
     font-size: 13px;
@@ -2723,7 +2733,7 @@ h1 {
     margin-top: 25px;
   }
   .hero-stage {
-    top: 420px;
+    top: 220px;
     transform: translateX(-50%) scale(0.62) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   }
   .trust-track {
@@ -2736,7 +2746,7 @@ h1 {
   }
   .dashboard-feature,
   .dashboard-card {
-    min-height: 420px;
+    min-height: 575px;
   }
   .dashboard-card {
     padding: 23px;
@@ -2745,14 +2755,20 @@ h1 {
     font-size: 28px;
   }
   .dashboard-device-wrap {
-    right: 15px;
-    width: 190px;
-    top: 60px;
-    height: 400px;
+    left: 50%;
+    right: auto;
+    width: 175px;
+    top: 126px;
+    height: 370px;
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  .dashboard-device-wrap:hover {
+    transform: translateX(-50%) rotate(-3deg);
   }
   .dashboard-float {
-    left: -30px;
-    bottom: 24px;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
   }
   .value-grid {
     gap: 12px;
@@ -2766,30 +2782,27 @@ h1 {
     max-width: 230px;
   }
   .product-wristband,
-  .product-watch {
-    width: 350px;
-    right: -72px;
-    bottom: -64px;
-  }
+  .product-watch,
   .product-buds {
-    width: 340px;
-    right: -64px;
-    bottom: -23px;
+    width: 300px;
+    right: -50px;
+    bottom: 12px;
   }
   .privacy-content h2 {
     font-size: 38px;
   }
   .privacy-visual {
-    min-height: 430px;
+    min-height: 480px;
   }
   .privacy-phone-card {
     width: 175px;
     height: 375px;
-    top: 30px;
+    top: 18px;
   }
   .secure-chip {
+    left: 50%;
     bottom: 16px;
-    left: calc(50% - 110px);
+    transform: translateX(-50%);
   }
   .footer-grid {
     grid-template-columns: 1fr;

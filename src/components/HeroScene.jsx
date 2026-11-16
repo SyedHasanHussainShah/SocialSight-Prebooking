@@ -2,22 +2,40 @@ import { ArrowDownRight, ArrowUpRight, LockKeyhole, Play } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { SectionEyebrow } from './BrandMark.jsx'
 
-function Phone({ className, src, label, alt, hasIsland = false, offset = 0 }) {
+function PhoneStatusBar() {
+  return (
+    <div className="iphone-status-bar" aria-hidden="true">
+      <span className="status-time">9:41</span>
+      <div className="status-icons">
+        <svg className="status-cellular" viewBox="0 0 18 12" fill="currentColor">
+          <rect x="0" y="9" width="2.6" height="3" rx="0.6" />
+          <rect x="4" y="6.5" width="2.6" height="5.5" rx="0.6" />
+          <rect x="8" y="3.8" width="2.6" height="8.2" rx="0.6" />
+          <rect x="12" y="1" width="2.6" height="11" rx="0.6" />
+        </svg>
+        <svg className="status-wifi" viewBox="0 0 16 14" fill="none">
+          <path d="M1.25 4.5a10 10 0 0 1 13.5 0M4.15 7.4a5.8 5.8 0 0 1 7.7 0M6.8 10.1a1.85 1.85 0 0 1 2.4 0" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          <circle cx="8" cy="12.2" r="0.95" fill="currentColor" />
+        </svg>
+        <div className="status-battery">
+          <div className="status-battery-body">
+            <div className="status-battery-level" style={{ width: '92%' }} />
+          </div>
+          <div className="status-battery-cap" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Phone({ className, src, label, alt, showIsland = false, showStatusBar = false }) {
   return (
     <figure className={`hero-phone ${className}`} aria-label={label}>
-      <div className={`phone-frame ${hasIsland ? 'phone-frame--with-island' : ''}`}>
-        {hasIsland && (
-          <div className="hero-dynamic-island" aria-hidden="true">
-            <span className="island-sensor" />
-            <span className="island-camera" />
-          </div>
-        )}
-        <div className="hero-phone-screen" style={{ paddingTop: offset ? `${offset}px` : undefined }}>
-          <img src={src} alt={alt} />
-        </div>
-        <span className="phone-glare" />
+      <div className="phone-frame">
+        <img src={src} alt={alt} />
+        {showIsland && <span className="phone-island" aria-hidden="true" />}
+        {showStatusBar && <PhoneStatusBar />}
       </div>
-      <figcaption>{label}</figcaption>
     </figure>
   )
 }
@@ -62,31 +80,20 @@ export default function HeroScene() {
           <div className="orbit orbit--outer" />
           <div className="orbit orbit--inner" />
           <div className="glow-core" />
-          <p className="stage-label stage-label--top">YOUR CIRCLE <i /> YOUR WORLD</p>
-          
-          {/* Main Family Dashboard Phone (Dynamic Island at center top, page content shifted down) */}
-          <Phone
-            className="phone--main"
-            src="/assets/socialsight-family-dashboard.png"
-            label="Family dashboard"
-            alt="SocialSight dashboard with a family circle and privacy features"
-            hasIsland={true}
-            offset={30}
-          />
+          {/* Main Family Dashboard Phone */}
+          <Phone className="phone--main" src="/assets/socialsight-family-dashboard.png" label="Family dashboard" alt="SocialSight Family dashboard with a family circle and privacy features" showIsland showStatusBar />
           
           {/* Splash Screen Phone (shifted up so it doesn't overlap earbuds) */}
-          <Phone className="phone--splash" src="/assets/socialsight-family-splash.png" label="A warmer welcome" alt="SocialSight Family splash screen" />
+          <Phone className="phone--splash" src="/assets/socialsight-family-splash.png" label="A warmer welcome" alt="SocialSight Family splash screen" showIsland />
           
           {/* Companion User App Phone (on the right, positioned down but fully in view) */}
-          <Phone className="phone--connect" src="/assets/socialsight-connect-screen.jpeg" label="Companion app" alt="SocialSight companion app connection screen" />
+          <Phone className="phone--connect" src="/assets/socialsight-connect-screen-iphone.png" label="Companion app" alt="SocialSight companion app connection screen" showIsland showStatusBar />
           
           {/* Companion Ergonomic Wristband (replaces watch, positioned lower on right) */}
           <img className="hero-wristband" src="/assets/socialsight-wristband-clean.png" alt="SocialSight companion wristband" />
           
           {/* Companion Earbuds (positioned cleanly below splash phone) */}
           <img className="hero-buds" src="/assets/socialsight-earbuds.png" alt="SocialSight companion earbuds" />
-          
-          <p className="stage-label stage-label--bottom">CONNECTED <b>✦</b> PRESENT <b>✦</b> YOURS</p>
         </div>
       </div>
       <div className="scroll-prompt"><span /> Scroll to explore <ArrowDownRight size={15} /></div>

@@ -1,63 +1,57 @@
-# SocialSight — Private Connection Platform
+# SocialSight Family — Web Experience
 
-> Private connection, made personal. On-device neural intelligence for your family circle with zero cloud surveillance.
-
-Live Pre-booking Web Experience: [SocialSight](https://github.com/SyedHasanHussainShah/SocialSight-Prebooking)
+Exact clone of the SocialSight Family web experience ([https://ta-01m7j9jc93qdb7fzdkfsp4nv2v-3000-x149k2dix3zijtwz03ce1yves.w.modal.host/](https://ta-01m7j9jc93qdb7fzdkfsp4nv2v-3000-x149k2dix3zijtwz03ce1yves.w.modal.host/)).
 
 ## 📦 What's Included
 
-Every component, animation, keyframe, style, and asset is engineered with high fidelity:
+Every component, animation, keyframe, style, and asset has been extracted and cloned 1:1:
 
 - **Hero 3D Interactive Scene (`src/components/HeroScene.jsx`)**:
-  - Interactive pointer-move perspective 3D tilt with smooth spring reset on pointer leave / blur.
-  - Floating triple device mockups (`socialsight-family-dashboard.png`, `socialsight-family-splash.png`, and `socialsight-connect-screen.jpeg`).
-  - Next-gen ergonomic wristband (`socialsight-wristband.png`) and companion earbuds (`socialsight-earbuds.png`).
-  - Dual concentric ambient rings, glowing core, and perspective depth grid.
+  - Interactive pointer-move perspective 3D tilt on phone models with smooth spring reset on pointer leave / blur.
+  - Floating dual device mockups (`socialsight-family-dashboard.png` and `socialsight-family-splash.png`).
+  - Dual concentric ambient rings (`orbit--outer`, `orbit--middle`), glowing orbs, and perspective depth grid.
+  - Floating status pills and trust badges.
 - **Scroll Reveal System (`src/components/ScrollReveal.jsx`)**:
   - Native `IntersectionObserver` scroll-triggered reveal animations with customizable delay tags (`--reveal-delay`).
   - Fluid fade-in and slide-up transitions (`is-visible`).
 - **Navigation (`src/components/Navigation.jsx`)**:
-  - Persistent sticky frosted-glass header (`backdrop-filter: blur(20px)`), mobile slide-down drawer toggle, and quick anchor navigation.
+  - Responsive header with blur background backdrop, mobile slide-down drawer toggle (`Menu`/`X`), brand mark, and smooth anchor scrolling.
 - **Landing Sections (`src/components/LandingSections.jsx`)**:
-  - **Trust Strip**: Continuous infinite marquee scroll animation with smooth bilateral gradient edge mask.
-  - **Family Section**: Family circle management dashboard and animated 3D value cards with glowing orbs.
-  - **How It Works**: 3-step feature cards with continuous start-to-end animated progress sweep indicators.
-  - **Product Ecosystem**: Companion ergonomic wristband and audio earbuds with subtle floating animations.
-  - **Companion User App**: Dedicated section highlighting the seamless on-device companion app for loved ones.
-  - **Closing CTA & Insane Footer**: Ambient radial mesh, interactive glassmorphic waitlist invitation card, live system status, and security verification badges.
+  - **Trust Strip**: Continuous infinite marquee scroll animation (`scroll-marquee`).
+  - **Family Section**: Perspective phone tilt frame and feature bullet points with glowing icons.
+  - **How It Works**: 3-step feature cards with step indicators, hover elevations, and responsive grids.
+  - **Product Ecosystem**: 3D floating smartwatch (`socialsight-wearable.png`) and earbuds (`socialsight-earbuds.png`) with drifting float animations (`product-drift`).
+  - **On-Device Privacy**: Shield emblem, privacy orb glows, and secured connection device frame (`socialsight-connect-screen.jpeg`).
+  - **Closing CTA & Footer**: Ambient gradient orbs, call to action, wordmark, and footer links.
 - **Design System & Keyframes (`src/index.css`)**:
   - Complete CSS variable tokens (`--canvas`, `--surface`, `--card`, `--line`, `--text`, `--muted`, `--teal`, `--gold`, etc.).
-  - Custom keyframes: `@keyframes progress-fill-sweep`, `@keyframes card-gentle-float`, `@keyframes orb-gentle-pulse`, `@keyframes product-drift`, `@keyframes marquee-infinite`.
+  - Custom keyframes: `@keyframes intro-up`, `@keyframes main-phone`, `@keyframes float-left`, `@keyframes float-right`, `@keyframes product-drift`, `@keyframes scroll-marquee`.
   - Accessible `prefers-reduced-motion` compliance.
+- **Assets (`public/assets/`)**:
+  - `socialsight-family-dashboard.png` (High-res mockup)
+  - `socialsight-family-splash.png` (High-res mockup)
+  - `socialsight-connect-screen.jpeg` (High-res mockup)
+  - `socialsight-wearable.png` (3D watch mockup)
+  - `socialsight-earbuds.png` (3D earbuds mockup)
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Install Dependencies
+### 1. Run Development Server
 ```bash
-npm install
-```
-
-### 2. Run Development Server
-```bash
+cd website
 npm run dev
 ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 3. Build for Production
+### 2. Build for Production
 ```bash
 npm run build
 ```
+Generates production-ready, minified and optimized assets inside `dist/`.
 
----
-
-## 🚢 Deploying to Vercel
-
-This repository is optimized for one-click deployment on [Vercel](https://vercel.com):
-
-1. Import this repository in your Vercel Dashboard.
-2. Framework Preset: **Vite** (auto-detected).
-3. Root Directory: `./`
-4. Build Command: `vite build`
-5. Output Directory: `dist`
-6. Click **Deploy**!
+### 3. Preview Production Build
+```bash
+npm run preview
+```

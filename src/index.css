@@ -685,7 +685,19 @@ h1 {
 }
 
 .phone--connect .phone-frame {
+  padding: 5px;
+  border-radius: 32px;
+  border: 1px solid rgba(183, 198, 202, 0.65);
+  background: linear-gradient(145deg, #596168 0%, #171c21 16%, #03070b 68%, #424a51 100%);
+  box-shadow:
+    0 0 0 1px rgba(230, 244, 245, 0.14),
+    0 22px 32px rgba(0, 0, 0, 0.52),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   transform: rotateY(-18deg) rotateZ(8deg);
+}
+
+.phone--connect .phone-frame img {
+  border-radius: 25px;
 }
 
 /* Keep the wristband clear of the companion phone. */

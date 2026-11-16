@@ -15,12 +15,9 @@ import {
   Mail,
   Radio,
   ScanFace,
-  Send,
   ShieldCheck,
   Sparkles,
-  Twitter,
   UsersRound,
-  Youtube,
 } from 'lucide-react'
 import { useState } from 'react'
 import { BrandMark, SectionEyebrow } from './BrandMark.jsx'
@@ -109,6 +106,8 @@ function TrustStrip() {
 }
 
 function FamilySection() {
+  const [dashboardMotion, setDashboardMotion] = useState(false)
+
   return (
     <section className="section family-section" id="family">
       <div className="page-shell family-intro">
@@ -137,13 +136,26 @@ function FamilySection() {
               </span>
               <i>✦</i>
             </div>
-            <div className="dashboard-device-wrap">
+            <div
+              className={`dashboard-device-wrap${dashboardMotion ? ' is-tapped' : ''}`}
+              role="button"
+              tabIndex={0}
+              aria-label="Preview the family dashboard phone"
+              onClick={() => setDashboardMotion(true)}
+              onAnimationEnd={() => setDashboardMotion(false)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  setDashboardMotion(true)
+                }
+              }}
+            >
               {/* Keep the family screen header clear below the Dynamic Island. */}
               <IPhoneFrame
-                src="/assets/socialsight-family-dashboard.png"
+                src="/assets/socialsight-family-dashboard.png?v=3"
                 alt="SocialSight dashboard showing family circle"
-                showStatusBar
                 showIsland
+                showHomeIndicator={false}
                 className="family-iphone"
               />
               <div className="dashboard-float">
@@ -486,17 +498,14 @@ function ClosingAndFooter() {
             <div className="footer-col">
               <p className="footer-heading">Connect</p>
               <div className="footer-social-links">
-                <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
-                  <Twitter size={16} />
-                </a>
-                <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <a href="https://github.com/SyedHasanHussainShah" target="_blank" rel="noreferrer" aria-label="GitHub">
                   <Github size={16} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/syed-hassan-hussain-shah-a3351b2b5" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <Linkedin size={16} />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
-                  <Youtube size={16} />
+                <a href="mailto:hasan347484@gmail.com" aria-label="Email hasan347484@gmail.com">
+                  <Mail size={16} />
                 </a>
               </div>
               <p className="footer-mini-note">Built for privacy, crafted for humanity.</p>

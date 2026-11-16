@@ -43,7 +43,10 @@ function Phone({ className, src, label, alt, showIsland = false, showStatusBar =
 export default function HeroScene() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const setHeroTilt = useCallback((event) => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      window.matchMedia('(hover: none), (pointer: coarse)').matches
+    ) return
     const bounds = event.currentTarget.getBoundingClientRect()
     setTilt({
       x: ((event.clientY - bounds.top) / bounds.height - 0.5) * -7,
@@ -79,9 +82,8 @@ export default function HeroScene() {
         <div className="hero-stage" style={{ '--tilt-x': `${tilt.x}deg`, '--tilt-y': `${tilt.y}deg` }} aria-label="Floating SocialSight products">
           <div className="orbit orbit--outer" />
           <div className="orbit orbit--inner" />
-          <div className="glow-core" />
           {/* Main Family Dashboard Phone */}
-          <Phone className="phone--main" src="/assets/socialsight-family-dashboard.png" label="Family dashboard" alt="SocialSight Family dashboard with a family circle and privacy features" showIsland showStatusBar />
+          <Phone className="phone--main" src="/assets/socialsight-family-dashboard.png?v=3" label="Family dashboard" alt="SocialSight Family dashboard with a family circle and privacy features" showIsland />
           
           {/* Splash Screen Phone (shifted up so it doesn't overlap earbuds) */}
           <Phone className="phone--splash" src="/assets/socialsight-family-splash.png" label="A warmer welcome" alt="SocialSight Family splash screen" showIsland />
